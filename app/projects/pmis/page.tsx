@@ -3,9 +3,9 @@ import { ProjectBackLink } from '@/app/projects/project-back-link';
 import styles from '../project-detail.module.css';
 
 const TECH_STACK_ICONS = [
-  { label: 'TypeScript', src: '/projects/Pmis/typescript.png' },
-  { label: 'React', src: '/projects/Pmis/logo-react.png' },
-  { label: 'Bootstrap', src: '/projects/Pmis/bootstrap.png' },
+  { label: 'TypeScript', src: '/projects/pmis/typescript.png' },
+  { label: 'React', src: '/projects/pmis/logo-react.png' },
+  { label: 'Bootstrap', src: '/projects/pmis/bootstrap.png' },
   { label: 'Figma', src: '/projects/Tech-stacks/figma.png' },
 ] as const;
 
@@ -17,7 +17,7 @@ export default function PmisProjectPage() {
           <ProjectBackLink className={styles.backLink} href="/" />
 
           <Image
-            src="/projects/Pmis/Pmis-logo.png"
+            src="/projects/pmis/Pmis-logo.png"
             alt="PMIS logo"
             width={140}
             height={40}
@@ -76,7 +76,7 @@ By digitizing procurement processes, PMIS strengthens governance, reduces admini
       <div className={`${styles.stackWrap} ${styles.pmisStackWrap}`}>
         <div className={`${styles.stackCard} ${styles.pmisStackCard} ${styles.stackCardTransition}`}>
           <Image
-            src="/projects/Pmis/RSBoPP.png"
+            src="/projects/pmis/RSBoPP.png"
             alt="PMIS RSBoPP screen"
             width={1200}
             height={1600}
@@ -87,7 +87,7 @@ By digitizing procurement processes, PMIS strengthens governance, reduces admini
         </div>
         <div className={`${styles.stackCard} ${styles.pmisStackCard}`}>
           <Image
-            src="/projects/Pmis/Landingpage.png"
+            src="/projects/pmis/Landingpage.png"
             alt="PMIS landing page screen"
             width={1200}
             height={1600}

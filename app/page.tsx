@@ -14,10 +14,19 @@ const SOCIAL = {
 
 const EXPERIMENTS = [
   {
+    key: 'iyawo',
+    title: 'Iyawo',
+    href: '/projects/iyawo',
+    year: '2026',
+    icon: '/projects/project-icons/Iyawo-logo.png',
+    description:
+      'IyawoFoods is a culturally-driven food discovery marketplace designed to reconnect people with authentic African meals while elevating the vendors who create them. By combining geolocation, vendor verification, and rich cultural storytelling, the platform makes it easy to find clean, trusted, and home-style dishes wherever you are.',
+  },
+  {
     key: 'biotap',
     title: 'Biotap',
     href: '/projects/biotap',
-    year: '2024',
+    year: '2025',
     icon: '/projects/project-icons/Biotap-logo.png',
     description:
       'Biotap is built to simplify how people move money in a world where connectivity is not always guaranteed. By turning your fingerprint into your payment key, Biotap enables fast, secure transactions that work both online and offline without relying on traditional authentication methods.',
@@ -30,15 +39,6 @@ const EXPERIMENTS = [
     icon: '/projects/project-icons/Dueno-logo.png',
     description:
       'Dueno is a digital property platform designed to fix the deep-rooted inefficiencies in Nigeria’s housing market. By introducing structure, verification, and accountability into every stage of the property lifecycle, Dueno creates a trusted environment where landlords, tenants, and agents can interact with confidence.',
-  },
-  {
-    key: 'iyawo',
-    title: 'Iyawo',
-    href: '/projects/iyawo',
-    year: '2024',
-    icon: '/projects/project-icons/Iyawo-logo.png',
-    description:
-      'IyawoFoods is a culturally-driven food discovery marketplace designed to reconnect people with authentic African meals while elevating the vendors who create them. By combining geolocation, vendor verification, and rich cultural storytelling, the platform makes it easy to find clean, trusted, and home-style dishes wherever you are.',
   },
   {
     key: 'pmis',

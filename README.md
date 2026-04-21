@@ -1,6 +1,6 @@
 # Az Landing Page
 
-Personal portfolio/landing page built with Next.js App Router and TypeScript.
+Personal portfolio built with Next.js App Router and TypeScript.
 
 ## Stack
 
@@ -9,46 +9,6 @@ Personal portfolio/landing page built with Next.js App Router and TypeScript.
 - TypeScript
 - CSS Modules
 
-## Local Development
-
-From this project folder:
-
-```bash
-npm install
-npm run dev
-```
-
-Default local URL:
-
-- `http://localhost:3002`
-
-Optional dev on port 3000:
-
-```bash
-npm run dev:3000
-```
-
-## Scripts
-
-- `npm run dev` - start dev server on port 3002
-- `npm run dev:3000` - start dev server on port 3000
-- `npm run build` - production build
-- `npm run start` - start production server on port 3002
-- `npm run lint` - run ESLint
-
-## Main Routes
-
-- `/` - landing page
-- `/projects/biotap`
-- `/projects/biopay`
-- `/projects/dueno`
-- `/projects/iyawo`
-- `/projects/jossy`
-- `/projects/pmis`
-- `/projects/socialbox`
-- `/branding/biopay`
-- `/branding/jossy`
-- `/branding/socialbox`
 
 ## Project Structure (Key Files)
 
@@ -74,12 +34,6 @@ app/
 public/projects/                  # Project images, logos, tech icons, videos
 ```
 
-## Deployment (Vercel)
-
-This project is configured for Vercel. To deploy:
-
-```bash
-npx vercel --prod --yes --scope ctrlbugs-projects
 ```
 
 Live domain:
@@ -87,6 +41,3 @@ Live domain:
 - `https://ctrlbugs.me`
 
 ## Notes
-
-- This repo currently uses local static assets from `public/projects`.
-- For project-specific visual changes, update the page file in `app/projects/*/page.tsx` and shared styles in `app/projects/project-detail.module.css`.

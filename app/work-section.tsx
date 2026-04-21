@@ -29,33 +29,43 @@ type WorkItem =
       alt: string;
     };
 
+/**
+ * Increment when you replace thumbnails under `public/projects` so browsers and
+ * `next/image` do not keep serving an older file at the same path.
+ */
+const WORK_THUMB_CACHE = '2';
+
+function workThumbSrc(path: string) {
+  return `${path}?v=${WORK_THUMB_CACHE}`;
+}
+
 const WORK_ITEMS: WorkItem[] = [
   {
     kind: 'image',
     key: 'biopay',
     title: 'Biopay',
-    image: '/projects/Biopay.png',
+    image: workThumbSrc('/projects/Biopay.png'),
     alt: 'Biopay project preview',
   },
   {
     kind: 'image',
     key: 'iyawo',
     title: 'Iyawo',
-    image: '/projects/Iyawo.png',
+    image: workThumbSrc('/projects/Iyawo.png'),
     alt: 'Iyawo project preview',
   },
   {
     kind: 'image',
     key: 'jossy',
     title: 'Jossy',
-    image: '/projects/Jossy.png',
+    image: workThumbSrc('/projects/Jossy.png'),
     alt: 'Jossy project preview',
   },
   {
     kind: 'image',
     key: 'socialbox',
     title: 'Socialbox',
-    image: '/projects/socialbox.png',
+    image: workThumbSrc('/projects/socialbox.png'),
     alt: 'Socialbox project preview',
   },
   {
@@ -63,7 +73,7 @@ const WORK_ITEMS: WorkItem[] = [
     key: 'light-inc',
     title: 'Light Inc brand video',
     file: 'Light Inc brand video.mp4',
-    thumbnail: '/projects/thumbs/light-inc.png',
+    thumbnail: workThumbSrc('/projects/thumbs/light-inc.png'),
     alt: 'Light Inc brand video',
   },
   {
@@ -71,7 +81,7 @@ const WORK_ITEMS: WorkItem[] = [
     key: 'roqqu',
     title: 'New Roqqu',
     file: 'New Roqqu.mp4',
-    thumbnail: '/projects/thumbs/new-roqqu.png',
+    thumbnail: workThumbSrc('/projects/thumbs/new-roqqu.png'),
     alt: 'New Roqqu video',
   },
   {
@@ -79,7 +89,7 @@ const WORK_ITEMS: WorkItem[] = [
     key: 'nutnosh',
     title: 'NutNosh animation',
     file: 'NutNosh animation.mp4',
-    thumbnail: '/projects/thumbs/nutnosh.png',
+    thumbnail: workThumbSrc('/projects/thumbs/nutnosh.png'),
     alt: 'NutNosh animation',
   },
   {
@@ -87,7 +97,7 @@ const WORK_ITEMS: WorkItem[] = [
     key: 'desiree',
     title: 'Desiree logo animation',
     file: 'our Desiree logo animation.MP4',
-    thumbnail: '/projects/thumbs/desiree.png',
+    thumbnail: workThumbSrc('/projects/thumbs/desiree.png'),
     alt: 'Desiree logo animation',
   },
   {
@@ -95,7 +105,7 @@ const WORK_ITEMS: WorkItem[] = [
     key: 'servicio-luna',
     title: 'Servicio Luna logo animation',
     file: 'Servicio Luna logo animation.mp4',
-    thumbnail: '/projects/thumbs/servicio-luna.png',
+    thumbnail: workThumbSrc('/projects/thumbs/servicio-luna.png'),
     alt: 'Servicio Luna logo animation',
   },
 ];

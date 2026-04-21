@@ -659,6 +659,19 @@ button.visualCardInteractive {
   color: var(--text-dim);
 }
 
+.footerLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin: 0;
+}
+
+.footerSep {
+  color: var(--text-dim);
+  user-select: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .workStrip {
     scroll-snap-type: none;

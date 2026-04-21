@@ -203,7 +203,31 @@ export default function Home() {
       </section>
 
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} Azewene Njigwum</p>
+        <p className={styles.footerLine}>
+          <span>© {new Date().getFullYear()} Azewene Njigwum</span>
+          <span className={styles.footerSep} aria-hidden>
+            ·
+          </span>
+          <a
+            href={SOCIAL.linkedin}
+            className={styles.bioLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <span className={styles.footerSep} aria-hidden>
+            ·
+          </span>
+          <a
+            href={SOCIAL.cv}
+            className={styles.bioLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CV
+          </a>
+        </p>
       </footer>
     </main>
   );

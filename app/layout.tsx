@@ -42,12 +42,20 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://ctrlbugs.me',
     siteName: 'CtrLBugs',
+    // Without this, crawlers (Instagram/Meta, etc.) grab the first big image on the page (e.g. work carousel).
+    images: [
+      {
+        url: '/og.png',
+        alt: 'Azewene Njigwum — Product Engineer',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Azewene Njigwum — Product Engineer',
     description:
       'Building secure, scalable, user-centered digital systems.',
+    images: ['/og.png'],
   },
 };
 

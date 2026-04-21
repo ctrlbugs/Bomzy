@@ -16,13 +16,17 @@ const rammettoOne = Rammetto_One({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ctrlbugs.me'),
+  alternates: {
+    canonical: '/',
+  },
   title: 'Azewene Njigwum — Product Engineer',
   description:
-    'Product Engineer focused on secure, scalable, user-centered digital systems. Founder & CTO of CtrLBugs.',
+    'Product Engineer focused on secure, scalable, user-centered digital systems',
   keywords: [
     'product engineer',
     'software engineering',
-    'biometric payments',
+    'product management',
     'procurement systems',
     'CtrLBugs',
   ],
@@ -34,14 +38,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Azewene Njigwum — Product Engineer',
     description:
-      'Building secure, scalable, user-centered digital systems at the intersection of engineering, design, and systems thinking.',
+      'Building secure, scalable, user-centered digital systems.',
     type: 'website',
+    url: 'https://ctrlbugs.me',
+    siteName: 'CtrLBugs',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Azewene Njigwum — Product Engineer',
     description:
-      'Building secure, scalable, user-centered digital systems at the intersection of engineering, design, and systems thinking.',
+      'Building secure, scalable, user-centered digital systems.',
   },
 };
 
@@ -60,13 +66,14 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Azewene Njigwum',
+              url: 'https://ctrlbugs.me',
               jobTitle: 'Product Engineer',
               description:
-                'Product Engineer and Founder & CTO of CtrLBugs, focused on secure, scalable digital systems.',
+                'Product Engineer focused on secure, scalable, user-centered digital systems',
               knowsAbout: [
                 'Software engineering',
                 'Product engineering',
-                'Biometric systems',
+                'Product Management',
                 'Government platforms',
               ],
             }),

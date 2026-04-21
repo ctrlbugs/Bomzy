@@ -1,135 +1,92 @@
-# TradePAT Landing Page - Next.js
+# Az Landing Page
 
-A modern, high-performance landing page built with Next.js 15, TypeScript, and Tailwind CSS.
+Personal portfolio/landing page built with Next.js App Router and TypeScript.
 
-## 🚀 Quick Start
+## Stack
 
-### ⚠️ IMPORTANT: Make sure you're in the `landing-page-nextjs` folder!
+- Next.js 16
+- React 19
+- TypeScript
+- CSS Modules
 
-**The old HTML version has been removed** - this is the only landing page project.
+## Local Development
+
+From this project folder:
 
 ```bash
-# Navigate to the Next.js project folder
-cd landing-page-nextjs
-
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
 ```
 
-The server will start on **http://localhost:3002** and Next.js will display:
-```
-- Local:        http://localhost:3002
-```
+Default local URL:
 
-**Port Configuration:**
-- **Default**: Port 3002 (avoids conflicts with user-dashboard on 3000 and admin on 3001)
-- **Alternative**: Run `npm run dev:3000` to use port 3000 (may conflict with user-dashboard)
+- `http://localhost:3002`
 
-### 🎯 Quick Start Scripts
+Optional dev on port 3000:
 
-**Windows:**
-- Double-click `start-server.bat` OR
-- Right-click `start-server.ps1` → "Run with PowerShell"
-
-**Manual:**
 ```bash
-cd landing-page-nextjs
-npm run dev
+npm run dev:3000
 ```
 
-## 📁 Project Structure
+## Scripts
 
-```
-landing-page-nextjs/
-├── app/
-│   ├── components/         # React components
-│   │   ├── Navigation/     # Navbar, TopBanner
-│   │   ├── Hero/           # Hero section
-│   │   ├── Features/       # Features carousel
-│   │   └── News/           # News carousel
-│   ├── config/             # Configuration
-│   │   └── constants.ts    # App constants
-│   ├── lib/                 # Utilities
-│   │   └── types.ts        # TypeScript types
-│   ├── layout.tsx          # Root layout
-│   ├── page.tsx            # Home page
-│   └── globals.css         # Global styles
-├── public/
-│   └── images/             # Static assets
-└── package.json
-```
+- `npm run dev` - start dev server on port 3002
+- `npm run dev:3000` - start dev server on port 3000
+- `npm run build` - production build
+- `npm run start` - start production server on port 3002
+- `npm run lint` - run ESLint
 
-## 🎯 Features
+## Main Routes
 
-- ✅ **Next.js 15** with App Router
-- ✅ **TypeScript** for type safety
-- ✅ **Tailwind CSS** for styling
-- ✅ **Server Components** for performance
-- ✅ **SEO Optimized** with metadata
-- ✅ **Responsive Design** for all devices
-- ✅ **Component-Based** architecture
+- `/` - landing page
+- `/projects/biotap`
+- `/projects/biopay`
+- `/projects/dueno`
+- `/projects/iyawo`
+- `/projects/jossy`
+- `/projects/pmis`
+- `/projects/socialbox`
+- `/branding/biopay`
+- `/branding/jossy`
+- `/branding/socialbox`
 
-## 📝 Migration Status
+## Project Structure (Key Files)
 
-### ✅ Completed
-- [x] Project setup
-- [x] Layout with metadata
-- [x] Global styles and CSS variables
-- [x] Navigation components (TopBanner, Navbar)
-- [x] Configuration system
-
-### 🚧 In Progress
-- [ ] Hero section with rotating titles
-- [ ] Features carousel
-- [ ] Market ticker
-- [ ] News carousel
-- [ ] Other sections (Stats, About, FAQ, Footer)
-
-### 📋 TODO
-- [ ] Language selector
-- [ ] Animations and transitions
-- [ ] Performance optimization
-- [ ] Testing
-
-## 🔧 Configuration
-
-Update authentication URLs in `app/config/constants.ts`:
-
-```typescript
-export const LandingPageConfig = {
-  authSignUpUrl: '/UserAuth.html',
-  authSignInUrl: '/UserAuth.html',
-  // ...
-};
+```text
+app/
+  page.tsx                        # Home page
+  work-section.tsx                # Work carousel + media interactions
+  page.module.css                 # Home page styles
+  globals.css                     # Global styles + transitions
+  projects/
+    project-detail.module.css     # Shared detail page styles
+    project-back-link.tsx         # Transition-aware back button
+    biopay/page.tsx
+    dueno/page.tsx
+    iyawo/page.tsx
+    jossy/page.tsx
+    pmis/page.tsx
+    socialbox/page.tsx
+  branding/
+    biopay/page.tsx
+    jossy/page.tsx
+    socialbox/page.tsx
+public/projects/                  # Project images, logos, tech icons, videos
 ```
 
-## 🚀 Deployment
+## Deployment (Vercel)
 
-### Vercel (Recommended)
+This project is configured for Vercel. To deploy:
+
 ```bash
-vercel deploy
+npx vercel --prod --yes --scope ctrlbugs-projects
 ```
 
-### Other Platforms
-- **Netlify**: Connect GitHub repo or drag & drop
-- **AWS Amplify**: Connect repo
-- **Docker**: Build and deploy container
+Live domain:
 
-## 📚 Tech Stack
+- `https://ctrlbugs.me`
 
-- **Framework**: Next.js 16
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
-- **Icons**: Material Icons
-- **Fonts**: Inter (Google Fonts)
+## Notes
 
-## 🤝 Contributing
-
-This is a proprietary project. For changes, contact the development team.
-
-## 📄 License
-
-Copyright © TradePAT. All rights reserved.
+- This repo currently uses local static assets from `public/projects`.
+- For project-specific visual changes, update the page file in `app/projects/*/page.tsx` and shared styles in `app/projects/project-detail.module.css`.

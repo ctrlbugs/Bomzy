@@ -1,0 +1,85 @@
+:root {
+  --bg: #111111;
+  --text: #fafafa;
+  --text-muted: rgba(250, 250, 250, 0.72);
+  --text-dim: rgba(250, 250, 250, 0.42);
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-hover: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --accent: #8ab4ff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(138, 180, 255, 0.35);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+}
+
+@supports (view-transition-name: none) {
+  ::view-transition-group(biopay-card) {
+    animation-duration: 480ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  ::view-transition-old(biopay-card) {
+    animation: biopay-old-out 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  ::view-transition-new(biopay-card) {
+    animation: biopay-new-in 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes biopay-old-out {
+  from {
+    opacity: 1;
+    filter: saturate(1);
+  }
+  to {
+    opacity: 0.15;
+    filter: saturate(1.06);
+  }
+}
+
+@keyframes biopay-new-in {
+  from {
+    opacity: 0.2;
+    transform: scale(0.92);
+    filter: saturate(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: saturate(1);
+  }
+}

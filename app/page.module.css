@@ -1,0 +1,693 @@
+.main {
+  --page-pad-x: clamp(1.5rem, 5vw, 4rem);
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  padding: clamp(3rem, 8vw, 6rem) var(--page-pad-x) 5rem;
+  width: min(100%, 92rem);
+  max-width: 92rem;
+  margin-inline: auto;
+}
+
+.hero {
+  margin-bottom: clamp(4rem, 12vw, 7rem);
+}
+
+.name {
+  font-family: var(--font-rammetto), system-ui, sans-serif;
+  font-size: clamp(2.75rem, 10vw, 5.25rem);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.055em;
+  margin: 0 0 2rem;
+  color: #fff;
+  /* Subtle chromatic fringe (retro / high-contrast display) */
+  text-shadow:
+    0.45px 0 0 rgba(255, 72, 72, 0.45),
+    -0.45px 0 0 rgba(0, 210, 255, 0.4);
+}
+
+.name span {
+  display: block;
+}
+
+.name span + span {
+  margin-top: 0.12em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name {
+    text-shadow: none;
+  }
+}
+
+.bio {
+  max-width: 38rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.bio p + p {
+  margin-top: 1.25rem;
+}
+
+.bioLink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.bioLink:hover {
+  text-decoration-color: currentColor;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 2.25rem;
+}
+
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.social a:hover {
+  background-color: #fff;
+  color: #111;
+}
+
+.social a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.social svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-family: var(--font-rammetto), system-ui, sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin: 0 0 2.5rem;
+}
+
+.workCarousel {
+  container-type: inline-size;
+  container-name: work;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/*
+ * Horizontal strip: N cards per viewport; scroll for the rest.
+ * Card width uses 100cqi (this container) so rows fill edge-to-edge — avoids % flex bugs.
+ * Mobile: 2 · Laptop/tablet (≥768px & <1200): 4 · Desktop (≥1200px): 5
+ */
+.workStrip {
+  --work-strip-gap: clamp(0.7rem, 1.6vw, 1.25rem);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: var(--work-strip-gap);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.25rem 0 0.75rem;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.workStrip::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.workCarouselStripWrap {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Laptop / desktop only: faint hover arrows on strip edges (hidden on touch / coarse pointers) */
+.workCarouselEdgeNav {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.workCarouselEdgeNavVisible {
+  opacity: 1;
+}
+
+.workCarouselEdgeBtn {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.11);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.workCarouselEdgeBtn:hover {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.workCarouselEdgeBtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.workCarouselEdgeBtnEmphasis {
+  color: rgba(255, 255, 255, 0.26);
+}
+
+.workCarouselEdgeBtn:disabled {
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
+}
+
+.workCarouselEdgeBtnLeft {
+  left: 0.15rem;
+}
+
+.workCarouselEdgeBtnRight {
+  right: 0.15rem;
+}
+
+.workEdgeChevronSvg {
+  display: block;
+}
+
+@container work (min-width: 768px) {
+  .workCarouselEdgeNav {
+    display: block;
+  }
+}
+
+@media (hover: none) {
+  .workCarouselEdgeNav {
+    display: none !important;
+  }
+}
+
+/* Default: 2 cards (narrow container) */
+.workStrip .visualCardInteractive {
+  flex: 0 0 calc((100cqi - 1 * var(--work-strip-gap)) / 2);
+  width: calc((100cqi - 1 * var(--work-strip-gap)) / 2);
+  min-width: 0;
+  max-width: calc((100cqi - 1 * var(--work-strip-gap)) / 2);
+  scroll-snap-align: start;
+  box-sizing: border-box;
+}
+
+@container work (min-width: 768px) {
+  .workStrip .visualCardInteractive {
+    flex: 0 0 calc((100cqi - 3 * var(--work-strip-gap)) / 4);
+    width: calc((100cqi - 3 * var(--work-strip-gap)) / 4);
+    max-width: calc((100cqi - 3 * var(--work-strip-gap)) / 4);
+  }
+}
+
+@container work (min-width: 1200px) {
+  .workStrip {
+    --work-strip-gap: clamp(0.3rem, 0.75vw, 0.6rem);
+  }
+
+  .workStrip .visualCardInteractive {
+    flex: 0 0 calc((100cqi - 4 * var(--work-strip-gap)) / 5);
+    width: calc((100cqi - 4 * var(--work-strip-gap)) / 5);
+    max-width: calc((100cqi - 4 * var(--work-strip-gap)) / 5);
+  }
+}
+
+.workPager {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.35rem;
+  padding: 0 0.25rem;
+}
+
+.workPagerBar {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 4px;
+  width: clamp(2rem, 10vw, 3.25rem);
+  min-width: 2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.workPagerBar:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.workPagerBar:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.workPagerBarActive {
+  background: #fff;
+}
+
+.visualCard {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+button.visualCardInteractive {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.visualCardInteractive:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.08),
+    0 18px 36px rgba(0, 0, 0, 0.28);
+}
+
+.visualCardInteractive:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.visualCardMedia {
+  position: absolute;
+  inset: 0;
+}
+
+.visualCardImageHost {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.workVideoThumb {
+  position: absolute;
+  inset: 0;
+  background: #0a0a0a;
+}
+
+.workVideoThumbOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 50%);
+  pointer-events: none;
+}
+
+.workVideoPlayRing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.88);
+}
+
+.workVideoPlayIcon {
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-left: 3px;
+}
+
+.workModal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.75rem, 3vw, 1.5rem);
+  padding-top: max(clamp(0.75rem, 3vw, 1.5rem), env(safe-area-inset-top));
+  background: rgba(0, 0, 0, 0.88);
+  animation: workModalIn 0.2s ease;
+}
+
+@keyframes workModalIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.workModalInner {
+  position: relative;
+  width: min(960px, 100%);
+  max-height: min(92vh, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.workModalClose {
+  position: absolute;
+  top: -0.25rem;
+  right: 0;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.workModalClose:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.workModalClose:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.workModalNav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 2;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: -0.25rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.workModalNav:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.workModalNav:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.workModalNavNext {
+  left: auto;
+  right: 0;
+  margin-left: 0;
+  margin-right: -0.25rem;
+}
+
+.workModalTitle {
+  margin: 0;
+  padding-right: 3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.92);
+  width: 100%;
+  text-align: center;
+}
+
+.workModalStage {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workModalImageHost {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  max-height: min(78vh, 900px);
+  background: #111;
+}
+
+.workModalImage {
+  object-fit: contain;
+}
+
+.workModalVideo {
+  width: 100%;
+  max-height: min(78vh, 900px);
+  border-radius: 2px;
+  background: #000;
+}
+
+.biopayTransitionSource {
+  view-transition-name: biopay-card;
+}
+
+@media (max-width: 640px) {
+  .workModalNav,
+  .workModalNavNext {
+    top: auto;
+    bottom: -0.5rem;
+    transform: none;
+    margin: 0;
+  }
+
+  .workModalNav {
+    left: 0.25rem;
+  }
+
+  .workModalNavNext {
+    right: 0.25rem;
+    left: auto;
+  }
+}
+
+.experimentsSection {
+  margin-top: clamp(3.5rem, 10vw, 6rem);
+}
+
+.experimentList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.experimentItem {
+  --exp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --exp-dur: 0.45s;
+  display: grid;
+  grid-template-columns: 4.75rem auto;
+  gap: 1.25rem 1.75rem;
+  align-items: start;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.4rem 0.5rem 0.4rem 0;
+  border-radius: 0.35rem;
+  transition: background-color var(--exp-dur) var(--exp-ease);
+}
+
+.experimentItem:hover {
+  background-color: transparent;
+}
+
+.experimentIconWrap {
+  position: relative;
+  width: 4.75rem;
+  height: 4.75rem;
+  flex-shrink: 0;
+  transform-origin: center center;
+  transition: transform var(--exp-dur) var(--exp-ease);
+}
+
+.experimentItem:hover .experimentIconWrap {
+  transform: scale(1.085);
+}
+
+.experimentIcon {
+  object-fit: contain;
+  padding: 2px;
+}
+
+.experimentHeadline {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.65rem;
+  color: var(--text);
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  transition:
+    color var(--exp-dur) var(--exp-ease),
+    text-decoration-color var(--exp-dur) var(--exp-ease);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+}
+
+.experimentItem:hover .experimentHeadline {
+  color: rgba(250, 250, 250, 0.52);
+  text-decoration-color: rgba(250, 250, 250, 0.38);
+}
+
+.experimentBody {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+@media (min-width: 768px) {
+  .experimentBody {
+    max-width: 66ch;
+  }
+}
+
+.experimentCopy {
+  min-width: 0;
+  max-width: min(68ch, 100%);
+}
+
+@media (max-width: 480px) {
+  .experimentItem {
+    grid-template-columns: 3.75rem 1fr;
+    gap: 1rem 1.25rem;
+  }
+
+  .experimentIconWrap {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+}
+
+.footer {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workStrip {
+    scroll-snap-type: none;
+  }
+
+  .workModal {
+    animation: none;
+  }
+
+  .social a {
+    transition: none;
+  }
+
+  .visualCard {
+    transition: none;
+  }
+
+  .visualCardInteractive:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .experimentItem,
+  .experimentHeadline,
+  .experimentIconWrap {
+    transition: none;
+  }
+
+  .experimentItem:hover .experimentIconWrap {
+    transform: none;
+  }
+}

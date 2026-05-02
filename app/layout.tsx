@@ -2,7 +2,14 @@ import type { Metadata } from 'next';
 import { Inter, Rammetto_One } from 'next/font/google';
 import './globals.css';
 
-const siteUrl = 'https://ctrlbugs.me';
+const siteUrl = 'https://boma.business';
+
+/** Link-preview lines (WhatsApp, iMessage, etc.) — match `og:title` + `og:description`. */
+const siteTitle = 'Godswill Boma Peterside';
+const siteTagline = '— Social Media Specialist | Content Creator';
+
+/** Bump when replacing `public/og.png` so social crawlers fetch the new asset. */
+const OG_IMAGE_VERSION = '2';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -22,12 +29,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  title: 'Godswill Boma Peterside — Content Creator|Event Host',
-  description:
-    'A dynamic content creator and event host with a passion for storytelling, audience engagement, and digital communication',
+  title: siteTitle,
+  description: siteTagline,
   keywords: [
+    'social media specialist',
     'content creator',
-    'event host',
     'social media',
     'digital communication',
     'storytelling',
@@ -36,8 +42,6 @@ export const metadata: Metadata = {
     'digital strategy',
     'digital content',
     'digital media',
-    'digital communication',
-    'digital strategy',
   ],
   authors: [{ name: 'Godswill Boma Peterside' }],
   icons: {
@@ -45,26 +49,24 @@ export const metadata: Metadata = {
     shortcut: '/favicon.png',
   },
   openGraph: {
-    title: 'Godswill Boma Peterside — Content Creator|Event Host',
-    description:
-      'Building secure, scalable, user-centered digital systems.',
+    title: siteTitle,
+    description: siteTagline,
     type: 'website',
     url: siteUrl,
-    siteName: 'CtrLBugs',
+    siteName: 'Boma',
     // Without this, crawlers (Instagram/Meta, etc.) grab the first big image on the page (e.g. work carousel).
     images: [
       {
-        url: '/og.png',
-        alt: 'Godswill Boma Peterside — Content Creator|Event Host',
+        url: `/og.png?v=${OG_IMAGE_VERSION}`,
+        alt: `${siteTitle} ${siteTagline}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Godswill Boma Peterside — Content Creator|Event Host',
-    description:
-      'A dynamic content creator and event host with a passion for storytelling, audience engagement, and digital communication',
-    images: ['/og.png'],
+    title: siteTitle,
+    description: siteTagline,
+    images: [`/og.png?v=${OG_IMAGE_VERSION}`],
   },
 };
 
@@ -84,12 +86,12 @@ export default function RootLayout({
               '@type': 'Person',
               name: 'Godswill Boma Peterside',
               url: siteUrl,
-              jobTitle: 'Content Creator|Event Host',
+              jobTitle: 'Social Media Specialist | Content Creator',
               description:
-                'A dynamic content creator and event host with a passion for storytelling, audience engagement, and digital communication.',
+                'Social media specialist and content creator — storytelling, audience engagement, and digital communication.',
               knowsAbout: [
+                'Social Media Specialist',
                 'Content Creator',
-                'Event Host',
                 'Social Media',
                 'Digital Communication',
                 'Storytelling',
@@ -98,8 +100,6 @@ export default function RootLayout({
                 'Digital Strategy',
                 'Digital Content',
                 'Digital Media',
-                'Digital Communication',
-                'Digital Strategy',
               ],
             }),
           }}

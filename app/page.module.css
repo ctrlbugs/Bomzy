@@ -621,10 +621,6 @@ button.visualCardInteractive {
   background: #000;
 }
 
-.biopayTransitionSource {
-  view-transition-name: biopay-card;
-}
-
 @media (max-width: 640px) {
   .workModalNav,
   .workModalNavNext {
@@ -644,11 +640,11 @@ button.visualCardInteractive {
   }
 }
 
-.experimentsSection {
+.workListSection {
   margin-top: clamp(3.5rem, 10vw, 6rem);
 }
 
-.experimentList {
+.workList {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -657,7 +653,7 @@ button.visualCardInteractive {
   gap: 1.1rem;
 }
 
-.experimentItem {
+.workItem {
   --exp-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --exp-dur: 0.45s;
   display: grid;
@@ -672,11 +668,11 @@ button.visualCardInteractive {
   transition: background-color var(--exp-dur) var(--exp-ease);
 }
 
-.experimentItem:hover {
+.workItem:hover {
   background-color: transparent;
 }
 
-.experimentIconWrap {
+.workIconWrap {
   position: relative;
   width: 4.75rem;
   height: 4.75rem;
@@ -685,16 +681,16 @@ button.visualCardInteractive {
   transition: transform var(--exp-dur) var(--exp-ease);
 }
 
-.experimentItem:hover .experimentIconWrap {
+.workItem:hover .workIconWrap {
   transform: scale(1.085);
 }
 
-.experimentIcon {
+.workIcon {
   object-fit: contain;
   padding: 2px;
 }
 
-.experimentHeadline {
+.workHeadline {
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -711,12 +707,12 @@ button.visualCardInteractive {
   text-underline-offset: 0.2em;
 }
 
-.experimentItem:hover .experimentHeadline {
+.workItem:hover .workHeadline {
   color: rgba(250, 250, 250, 0.52);
   text-decoration-color: rgba(250, 250, 250, 0.38);
 }
 
-.experimentBody {
+.workBody {
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.7;
@@ -724,23 +720,23 @@ button.visualCardInteractive {
 }
 
 @media (min-width: 768px) {
-  .experimentBody {
+  .workBody {
     max-width: 66ch;
   }
 }
 
-.experimentCopy {
+.workCopy {
   min-width: 0;
   max-width: min(68ch, 100%);
 }
 
 @media (max-width: 480px) {
-  .experimentItem {
+  .workItem {
     grid-template-columns: 3.75rem 1fr;
     gap: 1rem 1.25rem;
   }
 
-  .experimentIconWrap {
+  .workIconWrap {
     width: 3.75rem;
     height: 3.75rem;
   }
@@ -789,13 +785,13 @@ button.visualCardInteractive {
     box-shadow: none;
   }
 
-  .experimentItem,
-  .experimentHeadline,
-  .experimentIconWrap {
+  .workItem,
+  .workHeadline,
+  .workIconWrap {
     transition: none;
   }
 
-  .experimentItem:hover .experimentIconWrap {
+  .workItem:hover .workIconWrap {
     transform: none;
   }
 

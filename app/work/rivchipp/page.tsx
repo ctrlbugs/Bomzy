@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import { ProjectBackLink } from '@/app/projects/project-back-link';
-import styles from '../project-detail.module.css';
+import { WorkBackLink } from '@/app/work/work-back-link';
+import { projectIconSrc } from '@/lib/project-icons';
+import styles from '../work-detail.module.css';
 
 const RIVCHIPP_SOCIALS = [
   {
@@ -83,10 +84,10 @@ export default function RivchippProjectPage() {
     <main className={`${styles.page} ${styles.rivchippPage}`}>
       <div className={styles.grid}>
         <section className={styles.leftCol}>
-          <ProjectBackLink className={styles.backLink} href="/" />
+          <WorkBackLink className={styles.backLink} href="/" />
 
           <Image
-            src="/projects/project-icons/logo2.png"
+            src={projectIconSrc('/projects/project-icons/logo2.png')}
             alt="RIVCHPP logo"
             width={320}
             height={120}

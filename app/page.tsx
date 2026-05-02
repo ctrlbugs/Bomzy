@@ -1,21 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { projectIconSrc } from '@/lib/project-icons';
 import styles from './page.module.css';
 import { WorkSection } from './work-section';
 
 const SOCIAL = {
   linkedin: 'https://www.linkedin.com/in/godswillpeterside/',
   x: 'https://x.com/Iam_willzpeterz',
-  instagram: 'https://www.instagram.com/ctrlbugshq/',
+  instagram: 'https://www.instagram.com/iam_willzpeters/',
   cv: '/CV.pdf',
   email: 'mailto:willzpeterz2018@gmail.com',
 } as const;
 
-const EXPERIMENTS = [
+const WORK_ENTRIES = [
   {
     key: 'rhip',
     title: 'RHIPFactory',
-    href: '/projects/rhip',
+    href: '/work/rhip',
     icon: '/projects/project-icons/logo1.png',
     description:
       'RHIPFactory is a Pan-African healthcare-focused startup studio driving innovation by transforming critical healthcare challenges into scalable, tech-enabled solutions. With innovation campuses across Nigeria, Kenya, South Africa, and Morocco, it leverages a structured venture-building model and a multidisciplinary team to design and launch impactful healthcare startups that improve systems and outcomes across the continent.',
@@ -23,7 +24,7 @@ const EXPERIMENTS = [
   {
     key: 'healthsquare',
     title: 'HealthSquare Africa',
-    href: '/projects/healthsquare',
+    href: '/work/healthsquare',
     icon: '/projects/project-icons/logo3.png',
     description:
       'HealthSquare Africa is a community-driven health platform focused on connecting individuals who care about better healthcare in Nigeria. It provides a space for open conversations, shared experiences, and accessible health insights, helping to make healthcare more relatable, engaging, and easier to understand for everyday people.',
@@ -31,7 +32,7 @@ const EXPERIMENTS = [
   {
     key: 'rivchipp',
     title: 'RIVCHPP',
-    href: '/projects/rivchipp',
+    href: '/work/rivchipp',
     icon: '/projects/project-icons/logo2.png',
     description:
       'RIVCHPP is the official health insurance program of the Rivers State Government, dedicated to delivering accessible, affordable, and quality healthcare services. Through comprehensive coverage and a network of providers, it supports improved health outcomes by ensuring residents can access essential medical care without financial burden.',
@@ -96,7 +97,7 @@ export default function Home() {
 
             <div className={styles.bio}>
               <p>
-              A dynamic content creator and event host with a passion for storytelling, audience engagement, and digital communication. Skilled in producing trend-aware content and delivering compelling live.
+              A social media specialist and content creator with a passion for storytelling, audience engagement, and digital communication. Skilled in producing trend-aware content and delivering compelling live experiences.
               </p>
               <p>
                 I&apos;ve hosted beauty pageants, talk shows, interviews, and live digital
@@ -108,7 +109,7 @@ export default function Home() {
                 builds meaningful connections across platforms.
               </p>
               <p>
-                I&apos;m currently open to opportunities as a Content Creator or Event Host, bringing
+                I&apos;m currently open to opportunities as a Social Media Specialist or Content Creator, bringing
                 energy, creativity, and a strong audience-first mindset to every project.
               </p>
             </div>
@@ -150,7 +151,7 @@ export default function Home() {
                 priority
               />
             </div>
-            <p className={styles.heroRoles}>Content Creator &amp; Event Host</p>
+            <p className={styles.heroRoles}>Social Media Specialist | Content Creator</p>
           </div>
         </div>
       </header>
@@ -164,29 +165,29 @@ export default function Home() {
       </section>
 
       <section
-        className={styles.experimentsSection}
-        aria-labelledby="projects-heading"
+        className={styles.workListSection}
+        aria-labelledby="work-list-heading"
       >
-        <h2 id="projects-heading" className={styles.sectionTitle}>
-          Projects
+        <h2 id="work-list-heading" className={styles.sectionTitle}>
+          Work
         </h2>
-        <ul className={styles.experimentList}>
-          {EXPERIMENTS.map((exp) => (
-            <li key={exp.key} className={styles.experimentItem}>
-              <div className={styles.experimentIconWrap}>
+        <ul className={styles.workList}>
+          {WORK_ENTRIES.map((item) => (
+            <li key={item.key} className={styles.workItem}>
+              <div className={styles.workIconWrap}>
                 <Image
-                  src={exp.icon}
+                  src={projectIconSrc(item.icon)}
                   alt=""
                   fill
                   sizes="72px"
-                  className={styles.experimentIcon}
+                  className={styles.workIcon}
                 />
               </div>
-              <div className={styles.experimentCopy}>
-                <Link href={exp.href} className={styles.experimentHeadline}>
-                  {'year' in exp ? `${exp.title}, ${exp.year}` : exp.title}
+              <div className={styles.workCopy}>
+                <Link href={item.href} className={styles.workHeadline}>
+                  {'year' in item ? `${item.title}, ${item.year}` : item.title}
                 </Link>
-                <p className={styles.experimentBody}>{exp.description}</p>
+                <p className={styles.workBody}>{item.description}</p>
               </div>
             </li>
           ))}

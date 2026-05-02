@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import {
   useCallback,
   useEffect,
@@ -93,14 +92,14 @@ const INLINE_GALLERY_META: Record<
 
 /** Work card `key` → inline image gallery (no route navigation). */
 const INLINE_GALLERY_BY_WORK_KEY: Partial<Record<string, InlineGalleryId>> = {
-  biopay: 'fashion-week',
+  'fashion-week': 'fashion-week',
   rivchipp: 'rivchipp',
 };
 
 const WORK_ITEMS: WorkItem[] = [
   {
     kind: 'image',
-    key: 'biopay',
+    key: 'fashion-week',
     title: 'Fashion Week',
     image: FASHION_THUMB,
     alt: 'Fashion Week preview',
@@ -197,15 +196,7 @@ function activePageFromScroll(
   );
 }
 
-type DocumentWithViewTransition = Document & {
-  startViewTransition?: (update: () => void) => { finished: Promise<void> };
-};
-
-const IMAGE_PROJECT_ROUTES: Partial<Record<Extract<WorkItem, { kind: 'image' }>['key'], string>> =
-  {};
-
 export function WorkSection() {
-  const router = useRouter();
   const carouselRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -362,16 +353,6 @@ export function WorkSection() {
         setVideoModalIndex(null);
         setInlineGallery({ id: galleryId, slide: 0 });
         return;
-      }
-      const route = IMAGE_PROJECT_ROUTES[current.key];
-      if (!route) return;
-      const doc = document as DocumentWithViewTransition;
-      if (doc.startViewTransition) {
-        doc.startViewTransition(() => {
-          router.push(route);
-        });
-      } else {
-        router.push(route);
       }
       return;
     }

@@ -11,7 +11,7 @@ type DocumentWithViewTransition = Document & {
   startViewTransition?: (update: () => void) => { finished: Promise<void> };
 };
 
-export function ProjectBackLink({ href, className }: Props) {
+export function WorkBackLink({ href, className }: Props) {
   const router = useRouter();
 
   const onClick = () => {

@@ -10,30 +10,22 @@ Personal portfolio built with Next.js App Router and TypeScript.
 - CSS Modules
 
 
-## Project Structure (Key Files)
+## Project structure (key files)
 
 ```text
 app/
-  page.tsx                        # Home page
-  work-section.tsx                # Work carousel + media interactions
-  page.module.css                 # Home page styles
-  globals.css                     # Global styles + transitions
-  projects/
-    project-detail.module.css     # Shared detail page styles
-    project-back-link.tsx         # Transition-aware back button
-    biopay/page.tsx
-    dueno/page.tsx
-    iyawo/page.tsx
-    jossy/page.tsx
-    pmis/page.tsx
-    socialbox/page.tsx
-  branding/
-    biopay/page.tsx
-    jossy/page.tsx
-    socialbox/page.tsx
-public/projects/                  # Project images, logos, tech icons, videos
-```
-
+  page.tsx                 # Home page
+  work-section.tsx         # Moments & Media carousel
+  page.module.css
+  globals.css
+  work/
+    work-detail.module.css # Shared case-study layout
+    work-back-link.tsx
+    rhip/page.tsx
+    healthsquare/page.tsx
+    rivchipp/page.tsx
+public/projects/           # Case-study images, icons, media (not URL /work)
+public/file/               # Reels and portrait assets
 ```
 
 Live domain:
@@ -41,3 +33,5 @@ Live domain:
 - `https://boma.business`
 
 ## Notes
+
+Old `/projects/...` URLs redirect to `/work/...` where applicable (see `next.config.ts`).

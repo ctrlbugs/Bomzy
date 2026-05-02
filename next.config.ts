@@ -4,21 +4,12 @@ import path from 'path';
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      {
-        source: '/projects/biotap',
-        destination: '/projects/healthsquare',
-        permanent: true,
-      },
-      {
-        source: '/projects/dueno',
-        destination: '/projects/rivchipp',
-        permanent: true,
-      },
-      {
-        source: '/projects/rivchpp',
-        destination: '/projects/rivchipp',
-        permanent: true,
-      },
+      { source: '/projects/rhip', destination: '/work/rhip', permanent: true },
+      { source: '/projects/healthsquare', destination: '/work/healthsquare', permanent: true },
+      { source: '/projects/rivchipp', destination: '/work/rivchipp', permanent: true },
+      { source: '/projects/dueno', destination: '/work/rivchipp', permanent: true },
+      { source: '/projects/rivchpp', destination: '/work/rivchipp', permanent: true },
+      { source: '/projects/iyawo', destination: '/', permanent: true },
     ];
   },
   productionBrowserSourceMaps: false,

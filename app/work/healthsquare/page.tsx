@@ -1,23 +1,20 @@
 import Image from 'next/image';
-import { ProjectBackLink } from '@/app/projects/project-back-link';
-import styles from '../project-detail.module.css';
+import { WorkBackLink } from '@/app/work/work-back-link';
+import { projectIconSrc } from '@/lib/project-icons';
+import styles from '../work-detail.module.css';
 
-const RHIP_SOCIALS = [
+const HEALTHSQUARE_SOCIALS = [
   {
     label: 'Website',
-    href: 'https://www.rhipfactory.africa/',
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/rhipfactory/',
+    href: 'https://healthsquare.africa/',
   },
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/rhipfactory/',
+    href: 'https://www.instagram.com/healthsquare.africa/',
   },
   {
     label: 'X',
-    href: 'https://x.com/RHIPFactory',
+    href: 'https://x.com/healthsquareng',
   },
 ] as const;
 
@@ -35,14 +32,6 @@ function WebsiteIcon() {
     >
       <circle cx="12" cy="12" r="10" />
       <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-    </svg>
-  );
-}
-
-function LinkedInIcon() {
-  return (
-    <svg className={styles.techSocialSvg} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
   );
 }
@@ -65,40 +54,42 @@ function XIcon() {
 
 const SOCIAL_ICONS = {
   Website: WebsiteIcon,
-  LinkedIn: LinkedInIcon,
   Instagram: InstagramIcon,
   X: XIcon,
 } as const;
 
-const RHIP_GALLERY_IMAGES = [1, 2, 3, 4, 5, 6].map((n) => ({
-  src: `/projects/Rhip/${n}.png`,
-  alt: `RHIPFactory visual ${n}`,
+const HEALTHSQUARE_GALLERY_IMAGES = [1, 2, 3, 4].map((n) => ({
+  src: `/projects/Healthsquare/${n}.png`,
+  alt: `HealthSquare Africa visual ${n}`,
 }));
 
-export default function RhipProjectPage() {
+export default function HealthsquareProjectPage() {
   return (
-    <main className={`${styles.page} ${styles.rhipPage}`}>
+    <main className={`${styles.page} ${styles.healthsquarePage}`}>
       <div className={styles.grid}>
         <section className={styles.leftCol}>
-          <ProjectBackLink className={styles.backLink} href="/" />
+          <WorkBackLink className={styles.backLink} href="/" />
 
           <Image
-            src="/projects/project-icons/logo1.png"
-            alt="RHIPFactory logo"
-            width={400}
+            src={projectIconSrc('/projects/project-icons/logo3.png')}
+            alt="HealthSquare Africa logo"
+            width={320}
             height={120}
-            className={`${styles.kickerLogo} ${styles.rhipKickerLogo}`}
+            className={`${styles.kickerLogo} ${styles.healthsquareKickerLogo}`}
           />
-          <h1 className={styles.title}>Building the Future of Healthcare in Africa</h1>
+          <h1 className={styles.title}>
+            Connecting People.
+            <br className={styles.mobileOnlyBreak} /> Advancing Health.
+          </h1>
           <p className={styles.subtitle}>
-            A Pan-African startup studio transforming critical healthcare challenges into scalable,
-            tech-driven solutions.
+            Building a community around better health awareness and healthcare experiences in
+            Nigeria.
           </p>
 
           <div className={styles.techWrap}>
             <p className={styles.techLabel}>Follow on Socials</p>
             <ul className={styles.techList}>
-              {RHIP_SOCIALS.map((s) => {
+              {HEALTHSQUARE_SOCIALS.map((s) => {
                 const Icon = SOCIAL_ICONS[s.label as keyof typeof SOCIAL_ICONS];
                 return (
                   <li key={s.label}>
@@ -120,24 +111,26 @@ export default function RhipProjectPage() {
 
         <section className={styles.rightCol}>
           <p>
-            I had a valuable experience at RHIPFactory, where I collaborated with a multidisciplinary
-            team to support media and digital marketing efforts for emerging healthcare products.
+            HealthSquare Africa is a dynamic, people-driven community bringing together individuals who
+            are passionate about better health and improved healthcare in Nigeria. It creates a space
+            where conversations matter—where people can share experiences, gain trusted insights, and
+            stay informed about health in ways that are practical and relatable.
           </p>
           <p>
-            RHIPFactory is a Pan-African, healthcare-focused startup studio pioneering a new model of
-            innovation across the continent. With regional innovation campuses in Nigeria, Kenya,
-            South Africa, and Morocco, the organization identifies urgent healthcare challenges and
-            transforms them into scalable, tech-driven startups.
+            Beyond discussions, HealthSquare Africa bridges the gap between everyday people and the
+            healthcare ecosystem by simplifying complex health information and encouraging open,
+            informed dialogue. From wellness and prevention to navigating healthcare systems, the
+            platform empowers individuals to make better health decisions.
           </p>
           <p>
-            Through a structured venture-building process, RHIPFactory is redefining how healthcare
-            solutions are designed, developed, and delivered across Africa.
+            By combining community, education, and engagement, HealthSquare Africa is helping to
+            shape a more informed, connected, and health-conscious society.
           </p>
         </section>
       </div>
 
       <div className={styles.stackWrap}>
-        {RHIP_GALLERY_IMAGES.map((item, index) => (
+        {HEALTHSQUARE_GALLERY_IMAGES.map((item, index) => (
           <div key={item.src} className={styles.stackCard}>
             <Image
               src={item.src}

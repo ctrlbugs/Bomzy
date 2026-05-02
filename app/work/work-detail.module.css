@@ -5,10 +5,6 @@
   padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 4vw, 4rem) 0;
 }
 
-.iyawoPage {
-  background: #f57d00;
-}
-
 .rhipPage {
   background: #ed1b24;
 }
@@ -16,19 +12,6 @@
 .rhipKickerLogo {
   height: 5.5rem;
   margin: 0 0 0.65rem;
-}
-
-.duenoPage {
-  background: #14a8a8;
-}
-
-.pmisPage {
-  background: #fff;
-  color: #111;
-}
-
-.biopayPage {
-  background: #6647aa;
 }
 
 .healthsquarePage {
@@ -74,16 +57,6 @@
   margin: 0 0 0.65rem;
 }
 
-.socialboxPage {
-  background: #e0ed3e;
-  color: #111;
-}
-
-.jossyPage {
-  background: #c7ef5c;
-  color: #111;
-}
-
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
@@ -127,27 +100,6 @@
   height: 2.6rem;
   margin: 0 0 0.65rem;
   object-fit: contain;
-}
-
-.iyawoKickerLogo {
-  height: 6.2rem;
-  margin: 0 0 0.05rem;
-}
-
-.duenoKickerLogo {
-  height: 4.2rem;
-}
-
-.pmisKickerLogo {
-  height: 3.2rem;
-}
-
-.jossyKickerLogo {
-  height: 4.4rem;
-}
-
-.socialboxKickerLogo {
-  height: 4rem;
 }
 
 .title {
@@ -253,36 +205,6 @@
   color: var(--text-muted);
 }
 
-.pmisPage .backLink {
-  color: rgba(17, 17, 17, 0.82);
-}
-
-.pmisPage .subtitle,
-.pmisPage .rightCol,
-.pmisPage .techLabel {
-  color: rgba(17, 17, 17, 0.72);
-}
-
-.socialboxPage .backLink {
-  color: rgba(17, 17, 17, 0.82);
-}
-
-.socialboxPage .subtitle,
-.socialboxPage .rightCol,
-.socialboxPage .techLabel {
-  color: rgba(17, 17, 17, 0.72);
-}
-
-.jossyPage .backLink {
-  color: rgba(17, 17, 17, 0.82);
-}
-
-.jossyPage .subtitle,
-.jossyPage .rightCol,
-.jossyPage .techLabel {
-  color: rgba(17, 17, 17, 0.72);
-}
-
 .rightCol p {
   margin: 0;
 }
@@ -300,44 +222,10 @@
   align-items: start;
 }
 
-.iyawoStackWrap {
-  grid-template-columns: repeat(3, minmax(0, 17.5rem));
-  justify-content: center;
-}
-
-.biopayStackWrap {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: min(62rem, 100%);
-  justify-content: center;
-  align-items: start;
-  gap: clamp(0.65rem, 1.8vw, 1rem);
-}
-
-.pmisStackWrap {
-  grid-template-columns: repeat(2, minmax(0, 28rem));
-  justify-content: center;
-  gap: clamp(1rem, 2.8vw, 2.2rem);
-}
-
 .stackCard {
   width: 100%;
   max-width: 17.5rem;
   justify-self: center;
-}
-
-.stackCard.biopayStackCard {
-  max-width: none;
-  justify-self: stretch;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-}
-
-.pmisStackCard {
-  max-width: 28rem;
-}
-
-.stackCardTransition {
-  view-transition-name: biopay-card;
 }
 
 .stackImage {
@@ -345,12 +233,6 @@
   width: 100%;
   height: auto;
   object-fit: contain;
-}
-
-.biopayStackImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .logoFooter {
@@ -398,11 +280,6 @@
   .logoFooter {
     width: min(56rem, 100%);
   }
-
-  .biopayStackWrap {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    width: min(56rem, 100%);
-  }
 }
 
 @media (max-width: 680px) {
@@ -418,12 +295,6 @@
   .logoFooter {
     width: min(38rem, 100%);
   }
-
-  .biopayStackWrap {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(38rem, 100%);
-    gap: clamp(0.65rem, 2.4vw, 1rem);
-  }
 }
 
 @media (max-width: 520px) {
@@ -434,11 +305,5 @@
 
   .logoFooter {
     width: min(24rem, 100%);
-  }
-
-  .biopayStackWrap {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 100%;
-    gap: 0.6rem;
   }
 }

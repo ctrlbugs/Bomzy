@@ -1,4 +1,4 @@
-# Az Landing Page
+# Boma Landing Page
 
 Personal portfolio built with Next.js App Router and TypeScript.
 
@@ -38,6 +38,6 @@ public/projects/                  # Project images, logos, tech icons, videos
 
 Live domain:
 
-- `https://ctrlbugs.me`
+- `https://boma.business.com`
 
 ## Notes

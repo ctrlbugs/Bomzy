@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter, Rammetto_One } from 'next/font/google';
-import { getSiteUrl } from '@/lib/site-url';
 import './globals.css';
 
-const siteUrl = getSiteUrl();
+const siteUrl = 'https://ctrlbugs.me';
 
 const inter = Inter({
   subsets: ['latin'],

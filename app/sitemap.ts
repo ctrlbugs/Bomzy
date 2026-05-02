@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next';
-import { getSiteUrl } from '@/lib/site-url';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = getSiteUrl();
+  const base = 'https://ctrlbugs.me';
   const now = new Date();
 
   const routes = [

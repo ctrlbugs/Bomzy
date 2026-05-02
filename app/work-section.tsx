@@ -33,84 +33,99 @@ type WorkItem =
  * Increment when you replace thumbnails under `public/projects` so browsers and
  * `next/image` do not keep serving an older file at the same path.
  */
-const WORK_THUMB_CACHE = '2';
+const WORK_THUMB_CACHE = '6';
 
 function workThumbSrc(path: string) {
   return `${path}?v=${WORK_THUMB_CACHE}`;
 }
 
+/** Full-size gallery for the Fashion Week card (`public/projects/Fashion/1.jpeg` … `7.jpeg`). */
+const FASHION_GALLERY_SRCS = [1, 2, 3, 4, 5, 6, 7].map((n) =>
+  workThumbSrc(`/projects/Fashion/${n}.jpeg`),
+);
+
+const FASHION_THUMB = workThumbSrc('/projects/Fashion/thumb/1.png');
+
+/** Shared poster for all reel / Moments & Media video tiles. */
+const REEL_COVER_THUMB = workThumbSrc('/projects/thumbs/cover.png');
+
+/** Reels in `public/file/` (shown after image cards in the work strip). */
+const REEL_ENTRIES = [
+  { key: 'reel-1', title: 'Uncle Ben @45🎉', path: '/file/reel 1.mp4' },
+  { key: 'reel-2', title: 'Celebr8  Centre Event', path: '/file/reel 2.mp4' },
+  { key: 'reel-3', title: 'Wedding Ceremony', path: '/file/reel 3.mp4' },
+  { key: 'reel-4', title: 'RIVCHPP #Health4AllRivers', path: '/file/reel 4.mp4' },
+  { key: 'reel-5', title: 'Women Converge 2025', path: '/file/reel 5.mp4' },
+  { key: 'reel-9', title: 'King Dr, Dandeson Douglas Jaja', path: '/file/reel9.mp4' },
+  { key: 'reel-10', title: 'Fareware to his Royal Majesty', path: '/file/reel10.mp4' },
+] as const;
+
+const REEL_WORK_ITEMS: WorkItem[] = REEL_ENTRIES.map((r) => ({
+  kind: 'video',
+  key: r.key,
+  title: r.title,
+  file: r.path,
+  thumbnail: REEL_COVER_THUMB,
+  alt: `${r.title} video`,
+}));
+
+/** Rivchpp: `thumb/2.png` is the strip thumbnail; `1.jpeg`–`4.jpeg` open in the modal. */
+const RIVCHPP_THUMB = workThumbSrc('/projects/Rivchpp/thumb/2.png');
+const RIVCHPP_GALLERY_SRCS = [1, 2, 3, 4].map((n) =>
+  workThumbSrc(`/projects/Rivchpp/${n}.jpeg`),
+);
+
+type InlineGalleryId = 'fashion-week' | 'rivchipp';
+
+const INLINE_GALLERY_META: Record<
+  InlineGalleryId,
+  { title: string; sources: readonly string[] }
+> = {
+  'fashion-week': {
+    title: 'Fashion Week',
+    sources: FASHION_GALLERY_SRCS,
+  },
+  rivchipp: {
+    title: 'Rivchipp',
+    sources: RIVCHPP_GALLERY_SRCS,
+  },
+};
+
+/** Work card `key` → inline image gallery (no route navigation). */
+const INLINE_GALLERY_BY_WORK_KEY: Partial<Record<string, InlineGalleryId>> = {
+  biopay: 'fashion-week',
+  rivchipp: 'rivchipp',
+};
+
 const WORK_ITEMS: WorkItem[] = [
   {
     kind: 'image',
     key: 'biopay',
-    title: 'Biopay',
-    image: workThumbSrc('/projects/Biopay.png'),
-    alt: 'Biopay project preview',
+    title: 'Fashion Week',
+    image: FASHION_THUMB,
+    alt: 'Fashion Week preview',
   },
   {
     kind: 'image',
-    key: 'iyawo',
-    title: 'Iyawo',
-    image: workThumbSrc('/projects/Iyawo.png'),
-    alt: 'Iyawo project preview',
+    key: 'rivchipp',
+    title: 'Rivchipp',
+    image: RIVCHPP_THUMB,
+    alt: 'Rivchipp preview',
   },
-  {
-    kind: 'image',
-    key: 'jossy',
-    title: 'Jossy',
-    image: workThumbSrc('/projects/Jossy.png'),
-    alt: 'Jossy project preview',
-  },
-  {
-    kind: 'image',
-    key: 'socialbox',
-    title: 'Socialbox',
-    image: workThumbSrc('/projects/socialbox.png'),
-    alt: 'Socialbox project preview',
-  },
-  {
-    kind: 'video',
-    key: 'light-inc',
-    title: 'Light Inc brand video',
-    file: 'Light Inc brand video.mp4',
-    thumbnail: workThumbSrc('/projects/thumbs/light-inc.png'),
-    alt: 'Light Inc brand video',
-  },
-  {
-    kind: 'video',
-    key: 'roqqu',
-    title: 'New Roqqu',
-    file: 'New Roqqu.mp4',
-    thumbnail: workThumbSrc('/projects/thumbs/new-roqqu.png'),
-    alt: 'New Roqqu video',
-  },
-  {
-    kind: 'video',
-    key: 'nutnosh',
-    title: 'NutNosh animation',
-    file: 'NutNosh animation.mp4',
-    thumbnail: workThumbSrc('/projects/thumbs/nutnosh.png'),
-    alt: 'NutNosh animation',
-  },
-  {
-    kind: 'video',
-    key: 'desiree',
-    title: 'Desiree logo animation',
-    file: 'our Desiree logo animation.MP4',
-    thumbnail: workThumbSrc('/projects/thumbs/desiree.png'),
-    alt: 'Desiree logo animation',
-  },
-  {
-    kind: 'video',
-    key: 'servicio-luna',
-    title: 'Servicio Luna logo animation',
-    file: 'Servicio Luna logo animation.mp4',
-    thumbnail: workThumbSrc('/projects/thumbs/servicio-luna.png'),
-    alt: 'Servicio Luna logo animation',
-  },
+  ...REEL_WORK_ITEMS,
 ];
 
 function videoSrc(file: string) {
+  if (file.startsWith('/')) {
+    return (
+      '/' +
+      file
+        .split('/')
+        .filter(Boolean)
+        .map((segment) => encodeURIComponent(segment))
+        .join('/')
+    );
+  }
   return `/projects/${encodeURIComponent(file)}`;
 }
 
@@ -186,19 +201,19 @@ type DocumentWithViewTransition = Document & {
   startViewTransition?: (update: () => void) => { finished: Promise<void> };
 };
 
-const IMAGE_PROJECT_ROUTES: Partial<Record<Extract<WorkItem, { kind: 'image' }>['key'], string>> = {
-  biopay: '/branding/biopay',
-  iyawo: '/projects/iyawo',
-  jossy: '/branding/jossy',
-  socialbox: '/branding/socialbox',
-};
+const IMAGE_PROJECT_ROUTES: Partial<Record<Extract<WorkItem, { kind: 'image' }>['key'], string>> =
+  {};
 
 export function WorkSection() {
   const router = useRouter();
   const carouselRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const [modalIndex, setModalIndex] = useState<number | null>(null);
+  const [videoModalIndex, setVideoModalIndex] = useState<number | null>(null);
+  const [inlineGallery, setInlineGallery] = useState<{
+    id: InlineGalleryId;
+    slide: number;
+  } | null>(null);
   const [cardsPerView, setCardsPerView] = useState(2);
   const [activeWorkPage, setActiveWorkPage] = useState(0);
   const [stripHovered, setStripHovered] = useState(false);
@@ -278,21 +293,32 @@ export function WorkSection() {
 
   const showEdgeArrows = cardsPerView >= 4 && pageCount > 1;
 
-  const closeModal = useCallback(() => setModalIndex(null), []);
+  const modalOpen = videoModalIndex !== null || inlineGallery !== null;
 
-  const goModal = useCallback(
-    (delta: number) => {
-      setModalIndex((i) => {
-        if (i === null) return null;
-        const n = WORK_ITEMS.length;
-        return (i + delta + n) % n;
-      });
-    },
-    [],
-  );
+  const closeModal = useCallback(() => {
+    setVideoModalIndex(null);
+    setInlineGallery(null);
+  }, []);
+
+  const goVideoModal = useCallback((delta: number) => {
+    setVideoModalIndex((i) => {
+      if (i === null) return null;
+      const n = WORK_ITEMS.length;
+      return (i + delta + n) % n;
+    });
+  }, []);
+
+  const goInlineGallerySlide = useCallback((delta: number) => {
+    setInlineGallery((g) => {
+      if (g === null) return null;
+      const sources = INLINE_GALLERY_META[g.id].sources;
+      const n = sources.length;
+      return { ...g, slide: (g.slide + delta + n) % n };
+    });
+  }, []);
 
   useEffect(() => {
-    if (modalIndex === null) return;
+    if (!modalOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault();
@@ -300,35 +326,43 @@ export function WorkSection() {
       }
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        goModal(-1);
+        if (inlineGallery !== null) goInlineGallerySlide(-1);
+        else goVideoModal(-1);
       }
       if (e.key === 'ArrowRight') {
         e.preventDefault();
-        goModal(1);
+        if (inlineGallery !== null) goInlineGallerySlide(1);
+        else goVideoModal(1);
       }
     };
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
-  }, [modalIndex, closeModal, goModal]);
+  }, [modalOpen, inlineGallery, closeModal, goVideoModal, goInlineGallerySlide]);
 
   useEffect(() => {
-    if (modalIndex === null) return;
+    if (!modalOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = prev;
     };
-  }, [modalIndex]);
+  }, [modalOpen]);
 
   useEffect(() => {
-    if (modalIndex !== null) {
+    if (modalOpen) {
       closeRef.current?.focus();
     }
-  }, [modalIndex]);
+  }, [modalOpen]);
 
   const openAt = (index: number) => {
     const current = WORK_ITEMS[index];
     if (current.kind === 'image') {
+      const galleryId = INLINE_GALLERY_BY_WORK_KEY[current.key];
+      if (galleryId) {
+        setVideoModalIndex(null);
+        setInlineGallery({ id: galleryId, slide: 0 });
+        return;
+      }
       const route = IMAGE_PROJECT_ROUTES[current.key];
       if (!route) return;
       const doc = document as DocumentWithViewTransition;
@@ -341,10 +375,11 @@ export function WorkSection() {
       }
       return;
     }
-    setModalIndex(index);
+    setInlineGallery(null);
+    setVideoModalIndex(index);
   };
 
-  const item = modalIndex !== null ? WORK_ITEMS[modalIndex] : null;
+  const videoItem = videoModalIndex !== null ? WORK_ITEMS[videoModalIndex] : null;
 
   return (
     <>
@@ -377,14 +412,14 @@ export function WorkSection() {
                 aria-label={
                   work.kind === 'video'
                     ? `Open video: ${work.title}`
-                    : `Open image: ${work.title}`
+                    : INLINE_GALLERY_BY_WORK_KEY[work.key]
+                      ? `Open gallery: ${work.title}`
+                      : `Open image: ${work.title}`
                 }
               >
                 <div className={styles.visualCardMedia}>
                   {work.kind === 'image' ? (
-                    <div
-                      className={`${styles.visualCardImageHost} ${work.key === 'biopay' ? styles.biopayTransitionSource : ''}`}
-                    >
+                    <div className={styles.visualCardImageHost}>
                       <Image
                         src={work.image}
                         alt={work.alt}
@@ -404,6 +439,9 @@ export function WorkSection() {
                           style={{ objectFit: 'cover' }}
                         />
                       </div>
+                      <span className={styles.workVideoTitleOnThumb} aria-hidden="true">
+                        {work.title}
+                      </span>
                       <span className={styles.workVideoThumbOverlay} aria-hidden>
                         <span className={styles.workVideoPlayRing}>
                           <PlayIcon />
@@ -469,7 +507,7 @@ export function WorkSection() {
         )}
       </div>
 
-      {item && (
+      {(inlineGallery !== null || videoItem) && (
         <div
           className={styles.workModal}
           role="dialog"
@@ -490,47 +528,56 @@ export function WorkSection() {
             <button
               type="button"
               className={styles.workModalNav}
-              onClick={() => goModal(-1)}
-              aria-label="Previous item"
+              onClick={() => {
+                if (inlineGallery !== null) goInlineGallerySlide(-1);
+                else goVideoModal(-1);
+              }}
+              aria-label={inlineGallery !== null ? 'Previous image' : 'Previous item'}
             >
               <ChevronIcon dir="left" />
             </button>
             <button
               type="button"
               className={`${styles.workModalNav} ${styles.workModalNavNext}`}
-              onClick={() => goModal(1)}
-              aria-label="Next item"
+              onClick={() => {
+                if (inlineGallery !== null) goInlineGallerySlide(1);
+                else goVideoModal(1);
+              }}
+              aria-label={inlineGallery !== null ? 'Next image' : 'Next item'}
             >
               <ChevronIcon dir="right" />
             </button>
 
             <p id={titleId} className={styles.workModalTitle}>
-              {item.title}
+              {inlineGallery !== null
+                ? INLINE_GALLERY_META[inlineGallery.id].title
+                : videoItem?.title}
             </p>
 
             <div className={styles.workModalStage}>
-              {item.kind === 'image' ? (
+              {inlineGallery !== null ? (
                 <div className={styles.workModalImageHost}>
                   <Image
-                    src={item.image}
-                    alt={item.alt}
+                    key={`${inlineGallery.id}-${inlineGallery.slide}`}
+                    src={INLINE_GALLERY_META[inlineGallery.id].sources[inlineGallery.slide]}
+                    alt={`${INLINE_GALLERY_META[inlineGallery.id].title} — photo ${inlineGallery.slide + 1} of ${INLINE_GALLERY_META[inlineGallery.id].sources.length}`}
                     fill
                     sizes="(max-width: 960px) 100vw, 960px"
                     className={styles.workModalImage}
                     priority
                   />
                 </div>
-              ) : (
+              ) : videoItem && videoItem.kind === 'video' ? (
                 <video
-                  key={item.file}
+                  key={videoItem.file}
                   className={styles.workModalVideo}
-                  src={videoSrc(item.file)}
+                  src={videoSrc(videoItem.file)}
                   controls
                   playsInline
                   controlsList="nodownload"
                   autoPlay
                 />
-              )}
+              ) : null}
             </div>
           </div>
         </div>

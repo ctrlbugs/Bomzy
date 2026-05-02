@@ -4,50 +4,37 @@ import styles from './page.module.css';
 import { WorkSection } from './work-section';
 
 const SOCIAL = {
-  linkedin: 'https://www.linkedin.com/in/azewene/',
-  x: 'https://x.com/Thry0x',
-  github: 'https://github.com/ctrlbugs/',
+  linkedin: 'https://www.linkedin.com/in/godswillpeterside/',
+  x: 'https://x.com/Iam_willzpeterz',
   instagram: 'https://www.instagram.com/ctrlbugshq/',
   cv: '/CV.pdf',
-  email: 'mailto:azee.builds@gmail.com',
+  email: 'mailto:willzpeterz2018@gmail.com',
 } as const;
 
 const EXPERIMENTS = [
   {
-    key: 'iyawo',
-    title: 'Iyawo',
-    href: '/projects/iyawo',
-    year: '2026',
-    icon: '/projects/project-icons/Iyawo-logo.png',
+    key: 'rhip',
+    title: 'RHIPFactory',
+    href: '/projects/rhip',
+    icon: '/projects/project-icons/logo1.png',
     description:
-      'IyawoFoods is a culturally-driven food discovery marketplace designed to reconnect people with authentic African meals while elevating the vendors who create them. By combining geolocation, vendor verification, and rich cultural storytelling, the platform makes it easy to find clean, trusted, and home-style dishes wherever you are.',
+      'RHIPFactory is a Pan-African healthcare-focused startup studio driving innovation by transforming critical healthcare challenges into scalable, tech-enabled solutions. With innovation campuses across Nigeria, Kenya, South Africa, and Morocco, it leverages a structured venture-building model and a multidisciplinary team to design and launch impactful healthcare startups that improve systems and outcomes across the continent.',
   },
   {
-    key: 'biotap',
-    title: 'Biotap',
-    href: '/projects/biotap',
-    year: '2025',
-    icon: '/projects/project-icons/Biotap-logo.png',
+    key: 'healthsquare',
+    title: 'HealthSquare Africa',
+    href: '/projects/healthsquare',
+    icon: '/projects/project-icons/logo3.png',
     description:
-      'Biotap is built to simplify how people move money in a world where connectivity is not always guaranteed. By turning your fingerprint into your payment key, Biotap enables fast, secure transactions that work both online and offline without relying on traditional authentication methods.',
+      'HealthSquare Africa is a community-driven health platform focused on connecting individuals who care about better healthcare in Nigeria. It provides a space for open conversations, shared experiences, and accessible health insights, helping to make healthcare more relatable, engaging, and easier to understand for everyday people.',
   },
   {
-    key: 'dueno',
-    title: 'Dueno',
-    href: '/projects/dueno',
-    year: '2023',
-    icon: '/projects/project-icons/Dueno-logo.png',
+    key: 'rivchipp',
+    title: 'RIVCHPP',
+    href: '/projects/rivchipp',
+    icon: '/projects/project-icons/logo2.png',
     description:
-      'Dueno is a digital property platform designed to fix the deep-rooted inefficiencies in Nigeria’s housing market. By introducing structure, verification, and accountability into every stage of the property lifecycle, Dueno creates a trusted environment where landlords, tenants, and agents can interact with confidence.',
-  },
-  {
-    key: 'pmis',
-    title: 'Pmis',
-    href: '/projects/pmis',
-    year: '2022',
-    icon: '/projects/project-icons/Pmis-logo.png',
-    description:
-      'The Procurement Management Information System (PMIS) is a digital infrastructure designed to modernize public procurement in Nigeria by replacing fragmented, manual processes with a unified, transparent, and data-driven platform.',
+      'RIVCHPP is the official health insurance program of the Rivers State Government, dedicated to delivering accessible, affordable, and quality healthcare services. Through comprehensive coverage and a network of providers, it supports improved health outcomes by ensuring residents can access essential medical care without financial burden.',
   },
 ] as const;
 
@@ -63,14 +50,6 @@ function XIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-  );
-}
-
-function GitHubIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
     </svg>
   );
 }
@@ -108,65 +87,77 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <header className={styles.hero}>
-        <h1 className={styles.name}>
-          <span>Azewene</span>
-          <span>Njigwum</span>
-        </h1>
+        <div className={styles.heroGrid}>
+          <div className={styles.heroMain}>
+            <h1 className={styles.name}>
+              <span>Godswill</span>
+              <span>Boma Peterside</span>
+            </h1>
 
-        <div className={styles.bio}>
-          <p>
-            I am a Product Engineer focused on building secure, scalable, and user-centered digital
-            systems. My work sits at the intersection of software engineering, design, and systems
-            thinking—where functionality meets usability.
-          </p>
-          <p>
-            I have contributed to government and institutional platforms, translating complex
-            workflows into reliable, high-performance software. From biometric payment systems to
-            procurement infrastructure, I design and engineer solutions that are both technically
-            sound and intuitively usable.
-          </p>
-          <p>
-            As the Founder of{' '}
-            <a
-              className={styles.bioLink}
-              href={SOCIAL.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              CtrLBugs
-            </a>
-            , I lead the development of impactful technology products while mentoring developers and
-            advancing practical, real-world engineering practices.
-          </p>
+            <div className={styles.bio}>
+              <p>
+              A dynamic content creator and event host with a passion for storytelling, audience engagement, and digital communication. Skilled in producing trend-aware content and delivering compelling live.
+              </p>
+              <p>
+                I&apos;ve hosted beauty pageants, talk shows, interviews, and live digital
+                conversations, while also leading content strategy as a Community Manager and Social
+                Media Lead within the healthcare space.
+              </p>
+              <p>
+                Today, I create trend-aware, audience-focused content that informs, entertains, and
+                builds meaningful connections across platforms.
+              </p>
+              <p>
+                I&apos;m currently open to opportunities as a Content Creator or Event Host, bringing
+                energy, creativity, and a strong audience-first mindset to every project.
+              </p>
+            </div>
+
+            <nav className={styles.social} aria-label="Social links">
+              <a
+                href={SOCIAL.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon />
+              </a>
+              <a href={SOCIAL.x} target="_blank" rel="noopener noreferrer" aria-label="X">
+                <XIcon />
+              </a>
+              <a
+                href={SOCIAL.cv}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Resume — open CV (PDF)"
+              >
+                <DocumentIcon />
+              </a>
+              <a href={SOCIAL.email} aria-label="Email">
+                <MailIcon />
+              </a>
+            </nav>
+          </div>
+
+          <div className={styles.heroPortraitColumn}>
+            <div className={styles.heroPortrait}>
+              <Image
+                src="/file/bio.png"
+                alt="Godswill Boma Peterside"
+                fill
+                sizes="(min-width: 900px) min(42vw, 440px), min(100%, 420px)"
+                className={styles.heroPortraitImg}
+                priority
+              />
+            </div>
+            <p className={styles.heroRoles}>Content Creator &amp; Event Host</p>
+          </div>
         </div>
-
-        <nav className={styles.social} aria-label="Social links">
-          <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <LinkedInIcon />
-          </a>
-          <a href={SOCIAL.x} target="_blank" rel="noopener noreferrer" aria-label="X">
-            <XIcon />
-          </a>
-          <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <GitHubIcon />
-          </a>
-          <a
-            href={SOCIAL.cv}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Resume — open CV (PDF)"
-          >
-            <DocumentIcon />
-          </a>
-          <a href={SOCIAL.email} aria-label="Email">
-            <MailIcon />
-          </a>
-        </nav>
       </header>
 
       <section aria-labelledby="work-heading">
         <h2 id="work-heading" className={styles.sectionTitle}>
-          Product Design
+          Moments & Media
         </h2>
 
         <WorkSection />
@@ -193,7 +184,7 @@ export default function Home() {
               </div>
               <div className={styles.experimentCopy}>
                 <Link href={exp.href} className={styles.experimentHeadline}>
-                  {exp.title}, {exp.year}
+                  {'year' in exp ? `${exp.title}, ${exp.year}` : exp.title}
                 </Link>
                 <p className={styles.experimentBody}>{exp.description}</p>
               </div>
@@ -204,7 +195,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <p className={styles.footerLine}>
-          <span>© {new Date().getFullYear()} Azewene Njigwum</span>
+          <span>© {new Date().getFullYear()} Godswill Boma Peterside</span>
           <span className={styles.footerSep} aria-hidden>
             ·
           </span>

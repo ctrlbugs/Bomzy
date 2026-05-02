@@ -9,6 +9,15 @@
   background: #f57d00;
 }
 
+.rhipPage {
+  background: #ed1b24;
+}
+
+.rhipKickerLogo {
+  height: 5.5rem;
+  margin: 0 0 0.65rem;
+}
+
 .duenoPage {
   background: #14a8a8;
 }
@@ -22,8 +31,47 @@
   background: #6647aa;
 }
 
-.biotapPage {
-  background: #050505;
+.healthsquarePage {
+  background: #3950a0;
+}
+
+.healthsquareKickerLogo {
+  height: 5rem;
+  margin: 0 0 0.65rem;
+}
+
+.rivchippPage {
+  background: #fff;
+  color: #0b4ca9;
+}
+
+.rivchippPage .title {
+  color: #0b4ca9;
+}
+
+.rivchippPage .backLink {
+  color: rgba(11, 76, 169, 0.85);
+}
+
+.rivchippPage .subtitle,
+.rivchippPage .rightCol,
+.rivchippPage .techLabel {
+  color: rgba(11, 76, 169, 0.82);
+}
+
+.rivchippPage .techSocialLink {
+  color: #0b4ca9;
+  background: rgba(11, 76, 169, 0.1);
+}
+
+.rivchippPage .techSocialLink:hover {
+  background: rgba(11, 76, 169, 0.18);
+  color: #0b4ca9;
+}
+
+.rivchippKickerLogo {
+  height: 5rem;
+  margin: 0 0 0.65rem;
 }
 
 .socialboxPage {
@@ -147,6 +195,31 @@
 
 .techList li {
   display: inline-flex;
+}
+
+.techSocialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.18);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.techSocialLink:hover {
+  background: rgba(0, 0, 0, 0.32);
+  color: #fff;
+}
+
+.techSocialSvg {
+  width: 1.32rem;
+  height: 1.32rem;
+  flex-shrink: 0;
 }
 
 .techIcon {

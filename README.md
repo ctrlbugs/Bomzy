@@ -38,6 +38,6 @@ public/projects/                  # Project images, logos, tech icons, videos
 
 Live domain:
 
-- `https://ctrlbugs.me`
+- `https://boma.business.com`
 
 ## Notes

@@ -1,15 +1,17 @@
 import type { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/lib/site-url';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://ctrlbugs.me';
+  const base = getSiteUrl();
   const now = new Date();
 
   const routes = [
     '/',
-    '/projects/biotap',
+    '/projects/healthsquare',
     '/projects/biopay',
-    '/projects/dueno',
+    '/projects/rivchipp',
     '/projects/iyawo',
+    '/projects/rhip',
     '/projects/jossy',
     '/projects/pmis',
     '/projects/socialbox',

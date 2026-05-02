@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter, Rammetto_One } from 'next/font/google';
+import { getSiteUrl } from '@/lib/site-url';
 import './globals.css';
+
+const siteUrl = getSiteUrl();
 
 const inter = Inter({
   subsets: ['latin'],
@@ -16,45 +19,52 @@ const rammettoOne = Rammetto_One({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ctrlbugs.me'),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: '/',
   },
-  title: 'Azewene Njigwum — Product Engineer',
+  title: 'Godswill Boma Peterside — Content Creator|Event Host',
   description:
-    'Product Engineer focused on secure, scalable, user-centered digital systems',
+    'A dynamic content creator and event host with a passion for storytelling, audience engagement, and digital communication',
   keywords: [
-    'product engineer',
-    'software engineering',
-    'product management',
-    'procurement systems',
-    'CtrLBugs',
+    'content creator',
+    'event host',
+    'social media',
+    'digital communication',
+    'storytelling',
+    'audience engagement',
+    'digital marketing',
+    'digital strategy',
+    'digital content',
+    'digital media',
+    'digital communication',
+    'digital strategy',
   ],
-  authors: [{ name: 'Azewene Njigwum' }],
+  authors: [{ name: 'Godswill Boma Peterside' }],
   icons: {
     icon: [{ url: '/favicon.png', sizes: 'any' }],
     shortcut: '/favicon.png',
   },
   openGraph: {
-    title: 'Azewene Njigwum — Product Engineer',
+    title: 'Godswill Boma Peterside — Content Creator|Event Host',
     description:
       'Building secure, scalable, user-centered digital systems.',
     type: 'website',
-    url: 'https://ctrlbugs.me',
+    url: siteUrl,
     siteName: 'CtrLBugs',
     // Without this, crawlers (Instagram/Meta, etc.) grab the first big image on the page (e.g. work carousel).
     images: [
       {
         url: '/og.png',
-        alt: 'Azewene Njigwum — Product Engineer',
+        alt: 'Godswill Boma Peterside — Content Creator|Event Host',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Azewene Njigwum — Product Engineer',
+    title: 'Godswill Boma Peterside — Content Creator|Event Host',
     description:
-      'Building secure, scalable, user-centered digital systems.',
+      'A dynamic content creator and event host with a passion for storytelling, audience engagement, and digital communication',
     images: ['/og.png'],
   },
 };
@@ -73,16 +83,24 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Person',
-              name: 'Azewene Njigwum',
-              url: 'https://ctrlbugs.me',
-              jobTitle: 'Product Engineer',
+              name: 'Godswill Boma Peterside',
+              url: siteUrl,
+              jobTitle: 'Content Creator|Event Host',
               description:
-                'Product Engineer focused on secure, scalable, user-centered digital systems',
+                'A dynamic content creator and event host with a passion for storytelling, audience engagement, and digital communication.',
               knowsAbout: [
-                'Software engineering',
-                'Product engineering',
-                'Product Management',
-                'Government platforms',
+                'Content Creator',
+                'Event Host',
+                'Social Media',
+                'Digital Communication',
+                'Storytelling',
+                'Audience Engagement',
+                'Digital Marketing',
+                'Digital Strategy',
+                'Digital Content',
+                'Digital Media',
+                'Digital Communication',
+                'Digital Strategy',
               ],
             }),
           }}

@@ -13,6 +13,71 @@
   margin-bottom: clamp(4rem, 12vw, 7rem);
 }
 
+.heroGrid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+  align-items: center;
+}
+
+.heroMain {
+  min-width: 0;
+}
+
+.heroPortraitColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(1rem, 2.5vw, 1.35rem);
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.heroPortrait {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: min(70vh, 520px);
+  border-radius: 0.35rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.heroPortraitImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroRoles {
+  margin: 0;
+  padding-top: clamp(0.85rem, 2vw, 1.15rem);
+  border-top: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border-strong));
+  font-family: var(--font-rammetto), system-ui, sans-serif;
+  font-size: clamp(0.7rem, 1.45vw, 0.82rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+}
+
+@media (min-width: 900px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 38%);
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .heroPortraitColumn {
+    justify-self: end;
+    margin-inline: 0;
+    margin-inline-start: auto;
+    max-width: none;
+    width: 100%;
+  }
+}
+
 .name {
   font-family: var(--font-rammetto), system-ui, sans-serif;
   font-size: clamp(2.75rem, 10vw, 5.25rem);
@@ -361,6 +426,36 @@ button.visualCardInteractive {
   background: #0a0a0a;
 }
 
+.workVideoTitleOnThumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 0.45rem 0.5rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.62rem, 2.4cqi, 0.74rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-wrap: balance;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.visualCardInteractive:focus .workVideoTitleOnThumb {
+  opacity: 1;
+}
+
 .workVideoThumbOverlay {
   position: absolute;
   inset: 0;
@@ -702,5 +797,9 @@ button.visualCardInteractive {
 
   .experimentItem:hover .experimentIconWrap {
     transform: none;
+  }
+
+  .workVideoTitleOnThumb {
+    transition: none;
   }
 }
